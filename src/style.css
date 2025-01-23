@@ -15,3 +15,15 @@ body {
     width: inherit;
     height: inherit;
 }
+
+#app-content {
+    height: 10%;
+}
+
+babylon-viewer {
+    height: 90%;
+}
+
+babylon-viewer:focus {
+    outline: 10px solid #00b2ff;
+}
