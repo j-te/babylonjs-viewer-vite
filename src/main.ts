@@ -15,7 +15,10 @@ if (viewer) {
     viewer.addEventListener('viewerready', () => {
         const scene = viewer.viewerDetails.scene;
         const resizeListener = () => {
+            // https://forum.babylonjs.com/t/viewer-v2-render-considerations/56024/7
+            scene.getEngine().beginFrame();
             scene.render();
+            scene.getEngine().endFrame();
         };
         window.addEventListener("resize", resizeListener, true);
     });
