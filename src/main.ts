@@ -33,14 +33,32 @@ if (viewer) {
 
         // resizeListener to re-render, while rendering is suspended (not focused).
         const scene = viewer.viewerDetails.scene;
-        const resizeListener = () => {
+        const resizeListener = debounce(() => {
             // https://forum.babylonjs.com/t/viewer-v2-render-considerations/56024/7
             scene.getEngine().beginFrame();
             scene.render();
             scene.getEngine().endFrame();
-        };
+        }, 50);
         window.addEventListener("resize", resizeListener, true);
     });
 } else {
     console.error("Did not find Viewer!")
 }
+
+/**
+ * Debouncing creates a factory function that limits high consecutive callbacks, effectively excluded from executing.
+ * A good example is window resizing.
+ *
+ * @param {UnknownFunction} callback - The function to debounce.
+ * @param {number} timeout - The number of milliseconds to delay the invocation of the callback.
+ * @return {UnknownFunction} A debounced function that can be invoked with arguments.
+ */
+function debounce(callback: UnknownFunction, timeout: number): UnknownFunction {
+    let timeoutId: number | undefined = undefined;
+    return (...args: any[]) => {
+        window.clearTimeout(timeoutId);
+        timeoutId = window.setTimeout(() => callback(...args), timeout);
+    };
+}
+
+type UnknownFunction = (...args: unknown[]) => unknown;
