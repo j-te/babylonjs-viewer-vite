@@ -6,7 +6,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <p>Re-size while unfocused to visualise.</p>
     </div>
     <babylon-viewer
-        source="https://raw.githubusercontent.com/BabylonJS/Assets/master/meshes/ufo.glb"
+        source="Billy-T_Test.glb"
         environment="https://cdn.jsdelivr.net/npm/@babylonjs/viewer@preview/assets/photoStudio.env"
         animation-auto-play
         engine="WebGPU"
