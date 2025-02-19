@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/babylon_32x32.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BabylonJS Vite - Web Component Working Example</title>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@babylonjs/viewer@7.49.0/dist/babylon-viewer.esm.min.js"
+    ></script>
+    <script
+      type="module"
+      src="/examples/web-component-working/web-component-working.ts"
+    ></script>
+    <style>
+      :root {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      #app {
+        width: inherit;
+        height: inherit;
+      }
+
+      #app-content {
+        height: 10%;
+      }
+
+      babylon-viewer {
+        height: 90%;
+      }
+
+      babylon-viewer:focus {
+        outline: 10px solid #00b2ff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-content">
+      <p>Some content goes here, click to focus-out of canvas.</p>
+      <p>Re-size while unfocused to visualise.</p>
+    </div>
+    <babylon-viewer
+      source="../../Billy-T_Test.glb"
+      environment="https://cdn.jsdelivr.net/npm/@babylonjs/viewer@preview/assets/photoStudio.env"
+      animation-auto-play
+      engine="WebGPU"
+      autofocus
+      tabindex="-1"
+    >
+    </babylon-viewer>
+  </body>
+</html>
